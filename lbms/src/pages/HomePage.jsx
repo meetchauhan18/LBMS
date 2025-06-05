@@ -8,7 +8,8 @@ import { toast } from 'react-toastify';
 import DeleteDialog from '../components/DeleteDialog';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
-import { MdFilterAlt } from "react-icons/md";
+import { IoBookSharp } from "react-icons/io5";
+import { FaUser } from "react-icons/fa";
 import { HiFilter, HiPlus } from "react-icons/hi";
 
 const HomePage = () => {
@@ -89,15 +90,19 @@ const HomePage = () => {
     const navigate = useNavigate();
 
     return (
-        <Box className="home-page" style={{ minHeight: '100vh', background: '#e6e6e6', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', paddingTop: 40 }}>
-            <Container variant="outlined" style={{ maxWidth: 800, display: "flex", flexDirection: "column", gap: "10px" }}>
-                <Container sx={{ width: '100%', backgroundColor: 'white', display: 'flex', height: "80px", alignItems: 'center', justifyContent: 'space-evenly', borderRadius: '10px' }}>
-                    <Typography variant="h6" align="center">
-                        Total Books: {data.length}
-                    </Typography>
-                    <Typography variant="h6" align="center">
-                        Total Authors: {uniqueAuthors.length}
-                    </Typography>
+        <Box className="home-page" style={{ minHeight: '100vh', background: '#e6e6e6', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', paddingTop: 80 }}>
+            <Container variant="outlined" style={{ maxWidth: 800, display: "flex", flexDirection: "column", gap: "10px"}}>
+                <Container sx={{ width: '100%', height: "auto", display: 'flex', flexDirection: "row", gap: 2, backgroundColor: 'white', padding: 2, borderRadius: '10px' }}>
+                    <Container sx={{ width: '100%', backgroundColor: '#e6e6e6', display: 'flex', height: "80px", alignItems: 'center', justifyContent: 'space-evenly', borderRadius: '10px'}}>
+                        <Typography variant="h6" align="center" sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                            <IoBookSharp /> Total Books: {data.length}
+                        </Typography>
+                    </Container>
+                    <Container sx={{ width: '100%', backgroundColor: '#e6e6e6', display: 'flex', height: "80px", alignItems: 'center', justifyContent: 'space-evenly', borderRadius: '10px' }}>
+                        <Typography variant="h6" align="center"  sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                            <FaUser /> Total Authors: {uniqueAuthors.length}
+                        </Typography>
+                    </Container>
                 </Container>
                 <Container sx={{ width: '100%', backgroundColor: 'white', display: 'flex', alignItems: 'center', padding: 2, borderRadius: '10px', position: 'relative' }}>
                     <Box style={{ position: 'relative', width: '100%' }}>
@@ -148,9 +153,9 @@ const HomePage = () => {
                             }}
                         >
                             {uniqueAuthors.map((author) => (
-                            <MenuItem onClick={() => setSelectedAuthor(author)} key={author} value={author}>
-                                {author}
-                            </MenuItem>
+                                <MenuItem onClick={() => setSelectedAuthor(author)} key={author} value={author}>
+                                    {author}
+                                </MenuItem>
                             ))}
                         </Menu>)}
 
@@ -173,8 +178,8 @@ const HomePage = () => {
                     onDelete={row => handleDeleteDialog(row.id)} />
                 <EditModalExpirimental open={openReuseableModal} onClose={() => { setReuseableModalOpen(false) }} data={editRow} onSave={handleEditSave} />
             </Container>
-            <Container variant="outlined" style={{ maxWidth: 800,  }}>
-                <Container sx={{ width: '100%', height: "400px", backgroundColor: 'white', display: 'flex', flexDirection: "column", borderRadius: '10px', pt: 2 }}>
+            <Container variant="outlined" style={{ maxWidth: 800, }}>
+                <Container sx={{ width: '100%', height: "auto", backgroundColor: 'white', display: 'flex', flexDirection: "column", borderRadius: '10px', pt: 2 }}>
 
                     <Typography variant="h6" align="center" style={{ fontWeight: 600 }}>
                         Searched Books & Author Counts
@@ -214,7 +219,7 @@ const HomePage = () => {
                                         const count = author ? data.filter(book => book?.author === author)?.length : 0;
                                         if (count === 0) return null; // Skip authors with no books
                                         return (
-                                            <ListItem key={author} style={{ fontSize: 16, border: '2px solid red'}}>
+                                            <ListItem key={author} style={{ fontSize: 16, border: '2px solid red' }}>
                                                 <ListItemText primary={<b>{author}</b>} secondary={`${count} book${count > 1 ? 's' : ''}`} />
                                             </ListItem>
                                         );

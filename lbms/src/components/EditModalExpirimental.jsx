@@ -9,7 +9,7 @@ const EditModalExpirimental = ({ open, onClose, data, onSave }) => {
 
     useEffect(() => {
         if (data) {
-            setForm({ author: data.author || '', book: data.book || '', id: data.id || '' });
+            setForm({ author: data?.author || '', book: data?.book || '', id: data?.id || '' });
         }
     }, [data]);
 

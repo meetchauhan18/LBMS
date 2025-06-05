@@ -12,7 +12,7 @@ const EditFormPage = () => {
 
   useEffect(() => {
     const data = localStorageService.get('libraryData', []);
-    const bookToEdit = data.find(bookData => bookData.id === id);
+    const bookToEdit = data?.find(bookData => bookData?.id === id);
     if (bookToEdit) {
       setForm(bookToEdit);
     } else {
@@ -27,7 +27,7 @@ const EditFormPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.author || !form.book) {
+    if (!form?.author || !form?.book) {
       setMessage('All fields are required.');
       return;
     }
@@ -35,8 +35,8 @@ const EditFormPage = () => {
     const idx = data.findIndex(bookData => bookData.id === id);
     console.log('Index of book to edit:', idx);
     const IfNoChanges =
-      form.author === data[idx].author &&
-      form.book === data[idx].book;
+      form?.author === data[idx]?.author &&
+      form?.book === data[idx]?.book;
 
     if (IfNoChanges) {
       setMessage('No changes detected.');

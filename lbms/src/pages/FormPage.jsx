@@ -11,11 +11,11 @@ const FormPage = () => {
   const navigate = useNavigate();
 
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value, id:uuidv4() })
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value, id: uuidv4() })
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (!form.author || !form.book) {
+    if (!form?.author || !form?.book) {
       setMessage('All fields are required.')
       return
     }
@@ -49,8 +49,8 @@ const FormPage = () => {
           style={{ width: '100%', marginBottom: 16, padding: 8, borderRadius: 4, border: '1px solid blue' }}
           required
         />
-        <Button type="submit" style={{ width: '100%', padding: 10, borderRadius: 4, background: 'grey', color: 'white', cursor: "pointer",  border: 'none', fontWeight: 600 }}>Add</Button>
-        {message ?  (<div style={{ marginTop: 12, color: '#1976d2' }}>{message}</div>) : (null)}
+        <Button type="submit" style={{ width: '100%', padding: 10, borderRadius: 4, background: 'grey', color: 'white', cursor: "pointer", border: 'none', fontWeight: 600 }}>Add</Button>
+        {message ? (<div style={{ marginTop: 12, color: '#1976d2' }}>{message}</div>) : (null)}
       </form>
     </Box>
   )

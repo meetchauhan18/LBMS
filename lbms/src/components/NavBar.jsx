@@ -18,7 +18,7 @@ const NavBar = () => {
     const navigate = useNavigate();
 
     return (
-        <AppBar position="static" sx={{ m: 0, p: 0, backgroundColor: 'black' }}>
+        <AppBar position="fixed" sx={{ m: 0, p: 0, backgroundColor: 'black' }}>
             <Toolbar disableGutters sx={{ m: 0, p: 0 }}>
                 <Typography style={{
                     fontSize: "24px", paddingLeft: "10px", fontWeight:'500', display: 'flex', justifyContent: 'center', gap: 5, alignItems: 'center'
@@ -27,9 +27,9 @@ const NavBar = () => {
                 <Box sx={{ display: 'flex', gap: '10px', paddingRight: '10px' }}>
                     {pages.map((page) => (
                         <div
-                            key={page.name}
-                            style={{ borderBottom: location.pathname === page.path ? '3px solid red' : "", fontWeight: location.pathname === page.path ? 700 : 400}}
-                            onClick={() => {navigate(page.path)}}
+                            key={page?.name}
+                            style={{ borderBottom: location?.pathname === page?.path ? '3px solid red' : "", fontWeight: location?.pathname === page?.path ? 700 : 400 }}
+                            onClick={() => { navigate(page?.path) }}
                         >
                             {page.name}
                         </div>
