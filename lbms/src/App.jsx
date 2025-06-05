@@ -2,7 +2,8 @@ import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from './layout/MainLayout';
 import HomePage from './pages/homePage';
-import FormPage from './pages/formPage';
+import FormPage from './pages/FormPage';
+import EditFormPage from './pages/EditFormPage';
 
 const browserRouter = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const browserRouter = createBrowserRouter([
         path: '/form',
         element: <FormPage />,
       },
+      {
+        path: '/edit/:id',
+        element: <EditFormPage />,
+      }
     ],
   },
   {}

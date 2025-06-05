@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import toast from 'react-hot-toast';
 import localStorageService from '../utils/localStorageService';
-import { Box, TextField } from '@mui/material';
+import { Box, Button, TextField } from '@mui/material';
 
 const FormPage = () => {
   const [form, setForm] = useState({ id: '', author: '', book: '' })
@@ -49,7 +49,7 @@ const FormPage = () => {
           style={{ width: '100%', marginBottom: 16, padding: 8, borderRadius: 4, border: '1px solid blue' }}
           required
         />
-        <button type="submit" style={{ width: '100%', padding: 10, borderRadius: 4, background: 'grey', color: 'white', cursor: "pointer",  border: 'none', fontWeight: 600 }}>Add</button>
+        <Button type="submit" style={{ width: '100%', padding: 10, borderRadius: 4, background: 'grey', color: 'white', cursor: "pointer",  border: 'none', fontWeight: 600 }}>Add</Button>
         {message ?  (<div style={{ marginTop: 12, color: '#1976d2' }}>{message}</div>) : (null)}
       </form>
     </Box>
